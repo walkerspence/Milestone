@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
-        intent = new Intent(this, CreateUser.class);
+        intent = new Intent(this, AccountType.class);
         startActivity(intent);
     }
 }
