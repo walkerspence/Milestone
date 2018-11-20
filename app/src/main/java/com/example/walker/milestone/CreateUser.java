@@ -5,18 +5,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class CreateUser extends AppCompatActivity {
 
     public Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_create_user);
     }
 
-    public void onClick(View view) {
-        intent = new Intent(this, CreateUser.class);
+    public void createAccount(View view) {
+        intent = new Intent(this, ChooseVice.class);
         startActivity(intent);
     }
+
+
 }
