@@ -10,36 +10,39 @@ import android.view.View;
 import android.widget.Toast;
 import android.widget.Button;
 import android.widget.EditText;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 
 public class CreateUser extends AppCompatActivity implements View.OnClickListener {
 
     public Intent intent;
     private static final String TAG = "CreateUser";
 
-    private EditText displayName;
-    private EditText email;
-    private EditText school;
-    private EditText password;
-    private EditText confirmPassword;
-    private Button selectIcon;
-    private Button submit;
+    private EditText display_name, email, school, password, confirmPassword;
+    private Button selectIcon, submit;
 
     private FirebaseAuth mAuth;
+    private FirebaseAuth.AuthStateListener mAuthListener;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        intent = new Intent(this, ChooseVice.class);
         setContentView(R.layout.activity_create_user);
 
         // EditTexts
-        displayName = findViewById(R.id.displayName);
+        display_name = findViewById(R.id.displayName);
         email = findViewById(R.id.email);
         school = findViewById(R.id.school);
         password = findViewById(R.id.password);
@@ -54,10 +57,31 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
         submit.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref = database.getReference();
+
+        // Once the user is successfully created, we store additional info in our db
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                Log.d(TAG, "got here");
+                if (user != null) {
+                    // User is signed in
+                    DatabaseReference usersRef = ref.child("users");
+                    usersRef.child(user.getUid()).setValue(new User(user.getUid(),
+                            display_name.getText().toString(), email.getText().toString(),
+                            school.getText().toString(), true));
+                    startActivity(intent);
+                } else {
+                    // User is signed out
+                    Log.d(TAG, "onAuthStateChanged:signed_out");
+                }
+            }
+        };
     }
 
-    public void createAccount(String displayName, String email, String school, String password) {
-        intent = new Intent(this, ChooseVice.class);
+    public void createAccount(String display_name, String email, String school, String password) {
         Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
             return;
@@ -71,7 +95,6 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
@@ -81,8 +104,8 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
 
                     }
                 });
-        // Send displayName and school to database
     }
+
 
     private boolean validateForm() {
         // TODO: we can add fancy regex checking for email
@@ -123,8 +146,22 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
 //            intent = new Intent(this, AccountType.class);
 //            startActivity(intent);
         } else if (i == R.id.submit) {
-            createAccount(displayName.getText().toString(), email.getText().toString(),
+            createAccount(display_name.getText().toString(), email.getText().toString(),
                           school.getText().toString(), password.getText().toString());
+        }
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        mAuth.addAuthStateListener(mAuthListener);
+    }
+
+    @Override
+    public void onStop(){
+        super.onStop();
+        if(mAuthListener != null){
+            mAuth.removeAuthStateListener(mAuthListener);
         }
     }
 }

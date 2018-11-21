@@ -13,8 +13,7 @@ public class AccountType extends AppCompatActivity implements View.OnClickListen
 
     public Intent intent;
 
-    private ImageButton supporter;
-    private ImageButton user;
+    private ImageButton supporter, user;
     private Button back;
 
     @Override

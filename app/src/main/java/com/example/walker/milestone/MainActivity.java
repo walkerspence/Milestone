@@ -23,11 +23,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final String TAG = "MainActivity";
 
     public Intent intent;
-    private EditText username;
-    private EditText passwordLogin;
-    private Button signup;
-    private Button login;
-    private Button forgotPassword;
+    private EditText username, passwordLogin;
+    private Button signup, login, forgotPassword;
     private String domain = "@example.com";
 
 
@@ -53,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         login.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+        signOut();
     }
 
     private void signIn(String email, String password) {
