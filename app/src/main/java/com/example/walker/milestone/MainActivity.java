@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button signup;
     private Button login;
     private Button forgotPassword;
+    private String domain = "@example.com";
 
 
     private FirebaseAuth mAuth;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Set our variables from frontend
+        // Set variables
         // EditTexts
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
+            Log.d(TAG, "Could not validate form!");
             return;
         }
 
@@ -143,9 +145,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         int i = view.getId();
         if (i == R.id.signup) {
-            createAccount(username.getText().toString(), password.getText().toString());
+            createAccount(username.getText().toString() + domain, password.getText().toString());
         } else if (i == R.id.login) {
-            signIn(username.getText().toString(), password.getText().toString());
+            signIn(username.getText().toString() + domain, password.getText().toString());
         }
     }
 }
