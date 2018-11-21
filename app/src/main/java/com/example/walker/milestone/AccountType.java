@@ -50,8 +50,8 @@ public class AccountType extends AppCompatActivity implements View.OnClickListen
         }
         else if (i == R.id.forgot_password2) {
             // We go back to the parent, which is MainActivity
-            intent = NavUtils.getParentActivityIntent(this);
-            NavUtils.navigateUpTo(this, intent);
+            intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
     }
 }

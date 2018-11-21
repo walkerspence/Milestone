@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public Intent intent;
     private EditText username;
-    private EditText password;
+    private EditText passwordLogin;
     private Button signup;
     private Button login;
     private Button forgotPassword;
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Set variables
         // EditTexts
         username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
+        passwordLogin = findViewById(R.id.passwordLogin);
 
         // Buttons
         signup = findViewById(R.id.signup);
@@ -103,12 +103,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             username.setError(null);
         }
 
-        String pass = password.getText().toString();
+        String pass = passwordLogin.getText().toString();
         if (TextUtils.isEmpty(pass)) {
-            password.setError("Required.");
+            passwordLogin.setError("Required.");
             valid = false;
         } else {
-            password.setError(null);
+            passwordLogin.setError(null);
         }
 
         return valid;
@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent = new Intent(this, AccountType.class);
             startActivity(intent);
         } else if (i == R.id.login) {
-            signIn(username.getText().toString(), password.getText().toString());
+            signIn(username.getText().toString(), passwordLogin.getText().toString());
         }
     }
 }

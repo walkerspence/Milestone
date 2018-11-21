@@ -52,16 +52,16 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
         // Set listeners
         selectIcon.setOnClickListener(this);
         submit.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
     }
 
-    public void createAccount(String displayName, String email, String school,
-                              String password) {
+    public void createAccount(String displayName, String email, String school, String password) {
         intent = new Intent(this, ChooseVice.class);
         Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
             return;
         }
-
         // [START create_user_with_email]
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -105,9 +105,11 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
         }
 
         String confirmPass = confirmPassword.getText().toString();
-        if (pass != confirmPass) {
+        if (!pass.equals(confirmPass)) {
             confirmPassword.setError("Passwords don't match");
             valid = false;
+        } else {
+            confirmPassword.setError(null);
         }
 
         return valid;
