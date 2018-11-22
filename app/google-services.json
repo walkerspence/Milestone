@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "666090386027",
+    "firebase_url": "https://milestone-3a4fd.firebaseio.com",
+    "project_id": "milestone-3a4fd",
+    "storage_bucket": "milestone-3a4fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666090386027:android:97f9f5d5f175d66b",
+        "android_client_info": {
+          "package_name": "com.example.walker.milestone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666090386027-a30gg12okk0peikumkk0i0r9lg2702eq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBExG6abmwm9w5MSkdnlf3BIMsJyyDyknI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

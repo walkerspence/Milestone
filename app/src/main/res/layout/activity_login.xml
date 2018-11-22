@@ -46,13 +46,13 @@
         app:layout_constraintVertical_bias="0.16" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/passwordLogin"
         android:layout_width="198dp"
         android:layout_height="45dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:background="@color/colorPrimary"
         android:ems="10"
         android:fontFamily="@font/miso"
@@ -81,7 +81,7 @@
         android:textColor="#FFF"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
 
     <Button
         android:id="@+id/login"
@@ -96,7 +96,7 @@
         android:textColor="#FFF"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
 
     <Button
         android:id="@+id/forgot_password"
@@ -112,6 +112,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordLogin" />
 
 </android.support.constraint.ConstraintLayout>
