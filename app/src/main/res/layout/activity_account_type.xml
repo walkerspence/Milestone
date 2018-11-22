@@ -4,14 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
     tools:context=".AccountType">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="9dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/purple_dot" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="10dp"
+        android:layout_height="19dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/grey_dot" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="9dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.586"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/grey_dot" />
+
+    <ImageView
+        android:id="@+id/header2"
+        android:layout_width="367dp"
+        android:layout_height="74dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/account_type_header" />
 
     <ImageButton
         android:id="@+id/supporter"
         android:layout_width="125dp"
         android:layout_height="125dp"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:adjustViewBounds="true"
@@ -23,25 +68,26 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.501" />
+        app:layout_constraintVertical_bias="0.519" />
 
     <ImageButton
         android:id="@+id/user"
         android:layout_width="125dp"
         android:layout_height="125dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="44dp"
+        android:layout_marginEnd="48dp"
         android:layout_marginBottom="8dp"
         android:adjustViewBounds="true"
         android:background="@color/colorAccent"
         android:elevation="10dp"
+        android:onClick="onClick"
         android:padding="10dp"
         android:scaleType="fitCenter"
         android:src="@drawable/user"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.501" />
+        app:layout_constraintVertical_bias="0.519" />
 
     <TextView
         android:id="@+id/select_account_type"
@@ -52,26 +98,11 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/misobold"
         android:gravity="center_vertical|center_horizontal"
-        android:text="Select your account type"
-        android:textColor="#FFF"
+        android:text="S E L E C T   A C C O U N T   T Y P E"
+        android:textColor="#000"
         android:textSize="24dp"
         app:layout_constraintBottom_toTopOf="@+id/supporter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/forgot_password2"
-        android:layout_width="141dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@android:color/transparent"
-        android:text="BACK"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/supporter" />
 
 </android.support.constraint.ConstraintLayout>
