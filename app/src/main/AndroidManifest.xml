@@ -12,15 +12,25 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".AccountType"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity android:name=".CreateUser" />
-        <activity android:name=".ChooseVice"></activity>
+        <activity android:name=".ChooseVice" />
+        <activity android:name=".activity_supporter_login" />
+        <activity android:name=".ChooseUser" />
+        <activity android:name=".UserCalendar" />
+        <activity android:name=".SupporterCalendar" />
+        <activity android:name=".Home" />
+        <activity android:name=".UserSupporters" />
+        <activity android:name=".UserSettings" />
+        <activity android:name=".UserResources" />
+        <activity android:name=".SupporterHome" />
+        <activity android:name=".SupporterSettings"></activity>
     </application>
 
 </manifest>

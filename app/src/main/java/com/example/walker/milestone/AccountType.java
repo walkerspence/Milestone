@@ -14,7 +14,7 @@ public class AccountType extends AppCompatActivity implements View.OnClickListen
     public Intent intent;
 
     private ImageButton supporter, user;
-    private Button back;
+    // private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +25,12 @@ public class AccountType extends AppCompatActivity implements View.OnClickListen
         supporter = findViewById(R.id.supporter);
         user = findViewById(R.id.user);
         // TODO: we need to find a better name for this shit lmao - forgot_password2 doesn't make sense
-        back = findViewById(R.id.forgot_password2);
+        // back = findViewById(R.id.forgot_password2);
 
         // Set listeners
         supporter.setOnClickListener(this);
         user.setOnClickListener(this);
-        back.setOnClickListener(this);
+        // back.setOnClickListener(this);
     }
 
     @Override
@@ -38,19 +38,18 @@ public class AccountType extends AppCompatActivity implements View.OnClickListen
         int i = view.getId();
 
         if (i == R.id.supporter) {
-            // TODO: this will set the intent so that we are sent to the supporter sign up page
-//            intent = new Intent(this, CreateUser.class);
-//            startActivity(intent);
+              intent = new Intent(this, activity_supporter_login.class);
+              startActivity(intent);
         }
         else if (i == R.id.user) {
             // We go to the CreateUser activity
             intent = new Intent(this, CreateUser.class);
             startActivity(intent);
         }
-        else if (i == R.id.forgot_password2) {
+        /* else if (i == R.id.forgot_password2) {
             // We go back to the parent, which is MainActivity
             intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        }
+        } */
     }
 }

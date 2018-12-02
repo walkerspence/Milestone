@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChooseVice">
+    tools:context=".ChooseUser">
 
     <ImageView
         android:id="@+id/imageView6"
@@ -44,12 +44,12 @@
     <ImageView
         android:id="@+id/header"
         android:layout_width="367dp"
-        android:layout_height="69dp"
+        android:layout_height="74dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/select_vice" />
+        app:srcCompat="@drawable/s_select_users" />
 
     <TextView
         android:id="@+id/vice_label"
@@ -61,7 +61,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/misobold"
-        android:text="S E L E C T   Y O U R   V I C E S"
+        android:text="W H O   Y O U    S U P P O R T"
         android:textColor="#000"
         android:textSize="15pt"
         app:layout_constraintBottom_toTopOf="@+id/alc"
@@ -124,7 +124,7 @@
         android:layout_height="85dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/boba"
+        android:background="@drawable/add"
         app:layout_constraintBottom_toTopOf="@+id/button7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.861"
@@ -150,7 +150,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="112dp"
         android:layout_marginBottom="18dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:backgroundTint="@color/colorPrimary"
         android:fontFamily="@font/misobold"
         android:onClick="onClick"
         android:text="C O N T I N U E"

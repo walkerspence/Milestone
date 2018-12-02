@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateUser"
-    android:layout_margin="1dp">
+    tools:context=".activity_supporter_login">
 
     <EditText
         android:id="@+id/displayName"
@@ -87,40 +86,24 @@
         app:layout_constraintTop_toBottomOf="@+id/passwordText" />
 
     <Button
-        android:id="@+id/selectIcon"
-        android:layout_width="125dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:fontFamily="@font/misobold"
-        android:text="S E L E C T   I C O N"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toTopOf="@+id/imageView6"
-        app:layout_constraintEnd_toStartOf="@+id/submit"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-        app:layout_constraintVertical_bias="0.922" />
-
-    <Button
         android:id="@+id/submit"
         android:layout_width="132dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/colorPrimaryDark"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginBottom="24dp"
+        android:backgroundTint="@color/colorPrimary"
         android:fontFamily="@font/misobold"
         android:onClick="onClick"
         android:text="S U B M I T"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
-        app:layout_constraintVertical_bias="0.922" />
+        app:layout_constraintHorizontal_bias="0.981"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CpasswordText"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/displayText"
@@ -159,11 +142,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/misobold"
-        android:text="S C H O O L"
+        android:text="S U P P O R T E R  C O D E"
         android:textColor="#696969"
         android:textScaleX="1.1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.164"
+        app:layout_constraintHorizontal_bias="0.216"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/school" />
 
@@ -204,11 +187,10 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/displayText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/create_account" />
+        app:srcCompat="@drawable/s_create_acct" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -245,17 +227,5 @@
         app:layout_constraintHorizontal_bias="0.569"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/grey_dot" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_marginTop="24dp"
-
-        android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/CpasswordText"
-        tools:layout_editor_absoluteX="0dp">
-
-    </android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>
