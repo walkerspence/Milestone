@@ -250,12 +250,31 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="8dp"
 
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:orientation="horizontal"
-        app:layout_constraintTop_toBottomOf="@+id/CpasswordText"
-        tools:layout_editor_absoluteX="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CpasswordText">
 
     </android.support.v7.widget.RecyclerView>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="265dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/misobold"
+        app:layout_constraintBottom_toTopOf="@+id/schoolText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.597"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailText"
+        app:layout_constraintVertical_bias="0.8" />
 
 </android.support.constraint.ConstraintLayout>

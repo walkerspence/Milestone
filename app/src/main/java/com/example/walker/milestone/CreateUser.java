@@ -9,6 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,6 +47,10 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
         intent = new Intent(this, ChooseVice.class);
         setContentView(R.layout.activity_create_user);
 
+        Spinner schoolDropdown = findViewById(R.id.spinner);
+        String[] items = new String[]{"UC BERKELEY", "STANFURD"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        schoolDropdown.setAdapter(adapter);
 
         //placeholder icons
         mImages.add(R.drawable.barry);
