@@ -70,7 +70,7 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
         confirmPassword = findViewById(R.id.confirmPassword);
 
         // Buttons
-        selectIcon = findViewById(R.id.selectIcon);
+        //selectIcon = findViewById(R.id.selectIcon);
         submit = findViewById(R.id.submit);
 
         // Set listeners
@@ -171,11 +171,11 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View view) {
         int i = view.getId();
-        if (i == R.id.selectIcon) {
-            // TODO: send to the icon screen so user can select
+        //if (i == R.id.selectIcon) {
+            //// TODO: send to the icon screen so user can select
 //            intent = new Intent(this, AccountType.class);
 //            startActivity(intent);
-        } else if (i == R.id.submit) {
+        if (i == R.id.submit) {
             createAccount(display_name.getText().toString(), email.getText().toString(),
                           school.getText().toString(), password.getText().toString());
         }
