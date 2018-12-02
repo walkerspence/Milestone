@@ -4,12 +4,16 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,11 +39,25 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
     private FirebaseAuth.AuthStateListener mAuthListener;
 
 
+    //for the icons
+    private ArrayList<Integer> mImages = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         intent = new Intent(this, ChooseVice.class);
         setContentView(R.layout.activity_create_user);
+
+
+        //placeholder icons
+        mImages.add(R.drawable.barry);
+        mImages.add(R.drawable.bey);
+        mImages.add(R.drawable.boo);
+        mImages.add(R.drawable.ellen);
+        mImages.add(R.drawable.hillary);
+        mImages.add(R.drawable.kim);
+        mImages.add(R.drawable.phil);
+        initRecyclerView();
 
         // EditTexts
         display_name = findViewById(R.id.displayName);
@@ -79,6 +97,15 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
                 }
             }
         };
+    }
+
+
+    private void initRecyclerView() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(layoutManager);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mImages);
+        recyclerView.setAdapter(adapter);
     }
 
     public void createAccount(String display_name, String email, String school, String password) {

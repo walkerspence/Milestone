@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateUser">
+    tools:context=".CreateUser"
+    android:layout_margin="1dp">
 
     <EditText
         android:id="@+id/displayName"
@@ -101,14 +102,15 @@
         app:layout_constraintEnd_toStartOf="@+id/submit"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CpasswordText" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintVertical_bias="0.922" />
 
     <Button
         android:id="@+id/submit"
         android:layout_width="132dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="68dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginEnd="44dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/colorPrimaryDark"
         android:fontFamily="@font/misobold"
@@ -117,7 +119,8 @@
         android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CpasswordText" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView"
+        app:layout_constraintVertical_bias="0.922" />
 
     <TextView
         android:id="@+id/displayText"
@@ -241,5 +244,17 @@
         app:layout_constraintHorizontal_bias="0.569"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/grey_dot" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginTop="24dp"
+
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/CpasswordText"
+        tools:layout_editor_absoluteX="0dp">
+
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>
