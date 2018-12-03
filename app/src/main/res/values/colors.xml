@@ -6,4 +6,7 @@
     <color name="colorAccentSecond">#EAA522</color>
     <color name="thegrey">#E6E6E7</color>
     <color name="thegreytwo">#a4a4a4</color>
+    <color name="lightyellow">#32FFD800</color>
+    <color name="white">#fff</color>
 </resources>
+
