@@ -26,16 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/bottom_bar" />
 
-    <ImageView
-        android:id="@+id/header3"
-        android:layout_width="365dp"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/bottom_bar" />
-
     <Button
         android:id="@+id/homeButton"
         android:layout_width="65dp"
@@ -107,5 +97,57 @@
         app:layout_constraintHorizontal_bias="0.703"
         app:layout_constraintStart_toEndOf="@+id/resourcesButton"
         app:layout_constraintTop_toTopOf="@+id/header3" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="273dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/misobold"
+        android:text="I N V I T E   M O R E   S U P P O R T E R S   B Y"
+        android:textColor="@color/thegreytwo"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.887"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="273dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:fontFamily="@font/misobold"
+        android:text="S E N D I N G   T H E M   Y O U R   S U P P O R T   C O D E"
+        android:textColor="@color/thegreytwo"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/header3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        style="@android:style/Widget.Button"
+        android:layout_width="219dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:fontFamily="@font/misobold"
+        android:text="S E N D   Y O U R   C O D E"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/textView9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>
