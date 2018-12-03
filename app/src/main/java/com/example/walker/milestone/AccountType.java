@@ -14,7 +14,7 @@ public class AccountType extends AppCompatActivity implements View.OnClickListen
     public Intent intent;
 
     private ImageButton supporter, user;
-    // private Button back;
+//    private Button back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

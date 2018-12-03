@@ -1,15 +1,16 @@
 package com.example.walker.milestone;
 
 public class User {
-    String uid, displayName, email, school;
-    boolean isUser;
+    String uid, displayName, email, school, vice;
+    int iconImage;
 
-    public User(String uid, String displayName, String email, String school, boolean isUser) {
+    public User(String uid, String displayName, String email, String school, int iconImage, String vice) {
         this.uid = uid;
         this.displayName = displayName;
         this.email = email;
         this.school = school;
-        this.isUser = isUser;
+        this.iconImage = iconImage;
+        this.vice = vice;
     }
 
     public String getUid() {return uid;}
@@ -22,5 +23,9 @@ public class User {
     public String getSchool() {return school;}
     public void setSchool(String school) {this.school = school;}
 
-    public boolean isUser() {return isUser;}
+    public int getIconImageIndex() {return iconImage;}
+    public void setIconImageIndex(int iconImage) {this.iconImage = iconImage;}
+
+    public String getVice() {return vice;}
+    public void setVice(String vice) {this.vice = vice;}
 }

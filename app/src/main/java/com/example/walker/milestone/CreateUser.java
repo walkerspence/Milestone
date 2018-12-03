@@ -74,7 +74,7 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
         submit = findViewById(R.id.submit);
 
         // Set listeners
-        selectIcon.setOnClickListener(this);
+//        selectIcon.setOnClickListener(this);
         submit.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
@@ -89,9 +89,9 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
                 Log.d(TAG, "got here");
                 if (user != null) {
                     // User is signed in
-                    DatabaseReference usersRef = ref.child("users");
+                    DatabaseReference usersRef = ref.child("usersWithVice");
                     usersRef.child(user.getUid()).setValue(new User(user.getUid(),
-                            display_name.getText().toString(), email.getText().toString(),
+                            display_name.getText().toString(), email.getText().toString(), user.
                             school.getText().toString(), true));
                     startActivity(intent);
                 } else {
