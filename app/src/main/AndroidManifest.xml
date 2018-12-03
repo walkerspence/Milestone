@@ -30,7 +30,8 @@
         <activity android:name=".UserSettings" />
         <activity android:name=".UserResources" />
         <activity android:name=".SupporterHome" />
-        <activity android:name=".SupporterSettings"></activity>
+        <activity android:name=".SupporterSettings" />
+        <activity android:name=".UserMilestones"></activity>
     </application>
 
 </manifest>
