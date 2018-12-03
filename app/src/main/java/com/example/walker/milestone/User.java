@@ -4,6 +4,7 @@ public class User {
     String uid, displayName, email, school, vice;
     int iconImage;
 
+
     public User(String uid, String displayName, String email, String school, int iconImage, String vice) {
         this.uid = uid;
         this.displayName = displayName;
@@ -23,8 +24,8 @@ public class User {
     public String getSchool() {return school;}
     public void setSchool(String school) {this.school = school;}
 
-    public int getIconImageIndex() {return iconImage;}
-    public void setIconImageIndex(int iconImage) {this.iconImage = iconImage;}
+    public int getIconImage() {return iconImage;}
+    public void setIconImage(int iconImage) {this.iconImage = iconImage;}
 
     public String getVice() {return vice;}
     public void setVice(String vice) {this.vice = vice;}

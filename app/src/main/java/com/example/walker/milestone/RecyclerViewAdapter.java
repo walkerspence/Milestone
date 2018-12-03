@@ -23,7 +23,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private ArrayList<Integer> mImages = new ArrayList<>();
     private Context context;
-    private View clickedIcon;
+    public View clickedIcon;
 
     public RecyclerViewAdapter(Context context, ArrayList<Integer> mImages) {
         this.mImages = mImages;

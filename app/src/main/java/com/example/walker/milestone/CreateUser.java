@@ -36,6 +36,7 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private RecyclerViewAdapter imageIcon;
 
 
     //for the icons
@@ -47,7 +48,7 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
         intent = new Intent(this, ChooseVice.class);
         setContentView(R.layout.activity_create_user);
 
-        Spinner schoolDropdown = findViewById(R.id.spinner);
+        final Spinner schoolDropdown = findViewById(R.id.spinner);
         String[] items = new String[]{"UC BERKELEY", "STANFURD"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         schoolDropdown.setAdapter(adapter);
@@ -91,8 +92,8 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
                     // User is signed in
                     DatabaseReference usersRef = ref.child("usersWithVice");
                     usersRef.child(user.getUid()).setValue(new User(user.getUid(),
-                            display_name.getText().toString(), email.getText().toString(), user.
-                            school.getText().toString(), true));
+                            display_name.getText().toString(), email.getText().toString(),
+                            schoolDropdown.getSelectedItem().toString(), imageIcon.clickedIcon.getId(), "placeholder"));
                     startActivity(intent);
                 } else {
                     // User is signed out
@@ -109,9 +110,10 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
         recyclerView.setLayoutManager(layoutManager);
         RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mImages);
         recyclerView.setAdapter(adapter);
+        imageIcon = adapter;
     }
 
-    public void createAccount(String display_name, String email, String school, String password) {
+    public void createAccount(String email, String password) {
         Log.d(TAG, "createAccount:" + email);
         if (!validateForm()) {
             return;
@@ -121,6 +123,7 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        Log.d(TAG, "insideCreateUser");
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
@@ -164,6 +167,9 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
         } else {
             confirmPassword.setError(null);
         }
+        if (valid) {
+            Log.d(TAG, "validated");
+        }
 
         return valid;
     }
@@ -176,8 +182,8 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
 //            intent = new Intent(this, AccountType.class);
 //            startActivity(intent);
         if (i == R.id.submit) {
-            createAccount(display_name.getText().toString(), email.getText().toString(),
-                          school.getText().toString(), password.getText().toString());
+            Log.d(TAG, "creatingAccount....");
+            createAccount(email.getText().toString(), password.getText().toString());
         }
     }
 
