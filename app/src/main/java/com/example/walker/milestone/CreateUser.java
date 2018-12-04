@@ -54,13 +54,17 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
         schoolDropdown.setAdapter(adapter);
 
         //placeholder icons
-        mImages.add(R.drawable.barry);
-        mImages.add(R.drawable.bey);
-        mImages.add(R.drawable.boo);
-        mImages.add(R.drawable.ellen);
-        mImages.add(R.drawable.hillary);
-        mImages.add(R.drawable.kim);
-        mImages.add(R.drawable.phil);
+        mImages.add(R.drawable.blank_emoji);
+        mImages.add(R.drawable.blush_emoji);
+        mImages.add(R.drawable.cheese_emoji);
+        mImages.add(R.drawable.drop_emoji);
+        mImages.add(R.drawable.love_emoji);
+        mImages.add(R.drawable.sleep_emoji);
+        mImages.add(R.drawable.smile2_emoji);
+        mImages.add(R.drawable.smile_emoji);
+        mImages.add(R.drawable.sunglass_emoji);
+        mImages.add(R.drawable.tongue_emoji);
+        mImages.add(R.drawable.wow_emoji);
         initRecyclerView();
 
         // EditTexts
