@@ -76,7 +76,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/misobold"
-        android:text="D I S P L A Y   N A M E"
         android:textColor="@color/colorAccent"
         android:textSize="44dp"
         app:layout_constraintBottom_toBottomOf="@+id/header"
