@@ -1,6 +1,7 @@
 package com.example.walker.milestone;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,5 +35,13 @@ public class UserSupporters extends AppCompatActivity {
             startActivity(intent);
         }
 
+    }
+
+    public void onJoinSlack(View view) {
+        int id = view.getId();
+        String url = "https://join.slack.com/t/milestone-corp/shared_invite/enQtNDk1NTc2NjE1NTExLTBjMmU0NGQyNWVhNWZlOTVjNDdiNDQ0NDE2NWRjZTQ1YTFmYTBmYzk0N2ViMTk3ZmQ2OGQxN2VjMmFkMjY2Mzk";
+        Intent i = new Intent(Intent.ACTION_VIEW);
+        i.setData(Uri.parse(url));
+        startActivity(i);
     }
 }
