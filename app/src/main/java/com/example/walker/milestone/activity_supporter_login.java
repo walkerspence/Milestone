@@ -79,7 +79,8 @@ public class activity_supporter_login extends AppCompatActivity implements View.
                     DatabaseReference supportersRef = ref.child("supporters");
                     supportersRef.child(supporter.getUid()).setValue(new Supporter(supporter.getUid(),
                             displayName.getText().toString(), email.getText().toString(),
-                            supporterCode.getText().toString(), false));
+                            supporterCode.getText().toString(), false,
+                            imageIcon.clickedIcon.getId()));
 
                     setUserSupporter(supporter.getUid(), supporterCode.getText().toString(), ref);
                     startActivity(intent);

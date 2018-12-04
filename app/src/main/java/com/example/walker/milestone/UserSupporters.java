@@ -12,6 +12,8 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class UserSupporters extends AppCompatActivity {
 
@@ -24,6 +26,11 @@ public class UserSupporters extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_supporters);
+
+        mAuth = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref = database.getReference();
+        DatabaseReference supporter;
     }
 
     public void onClick(View view) {
@@ -56,7 +63,6 @@ public class UserSupporters extends AppCompatActivity {
     }
 
     public void onShareCode(View view) {
-        // TODO: can u set "code" to the username
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         if (mAuth == null) {
             Log.d(TAG, "null user");
