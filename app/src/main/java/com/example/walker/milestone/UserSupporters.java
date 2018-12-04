@@ -12,6 +12,8 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class UserSupporters extends AppCompatActivity {
 
@@ -26,7 +28,9 @@ public class UserSupporters extends AppCompatActivity {
         setContentView(R.layout.activity_user_supporters);
 
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
-
+        final FirebaseDatabase database = FirebaseDatabase.getInstance();
+        final DatabaseReference ref = database.getReference();
+        DatabaseReference supporter;
     }
 
     public void onClick(View view) {
