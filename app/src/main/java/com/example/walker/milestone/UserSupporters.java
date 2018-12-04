@@ -1,5 +1,8 @@
 package com.example.walker.milestone;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -43,5 +46,12 @@ public class UserSupporters extends AppCompatActivity {
         Intent i = new Intent(Intent.ACTION_VIEW);
         i.setData(Uri.parse(url));
         startActivity(i);
+    }
+
+    public void onShareCode(View view) {
+        // TODO: can u set "code" to the username
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("supporter code", "code");
+        clipboard.setPrimaryClip(clip);
     }
 }
