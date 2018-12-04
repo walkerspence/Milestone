@@ -46,7 +46,7 @@ public class Home extends AppCompatActivity {
     public void onClick(View view) {
         int id = view.getId();
         if(id == R.id.homeButton) {
-            intent = new Intent(this, User.class);
+            intent = new Intent(this, Home.class);
             startActivity(intent);
         } else if (id == R.id.calendarButton){
             intent = new Intent(this, UserCalendar.class);
