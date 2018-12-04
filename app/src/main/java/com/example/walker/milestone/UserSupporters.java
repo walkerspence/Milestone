@@ -7,11 +7,18 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class UserSupporters extends AppCompatActivity {
 
+    private static final String TAG = "UserSupporters";
     public Intent intent;
+    private FirebaseUser mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +57,12 @@ public class UserSupporters extends AppCompatActivity {
 
     public void onShareCode(View view) {
         // TODO: can u set "code" to the username
+        mAuth = FirebaseAuth.getInstance().getCurrentUser();
+        if (mAuth == null) {
+            Log.d(TAG, "null user");
+        }
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("supporter code", "code");
+        ClipData clip = ClipData.newPlainText("supporter code", mAuth.getUid());
         clipboard.setPrimaryClip(clip);
     }
 }
