@@ -113,7 +113,7 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
     }
 
     public void populateUserName(DatabaseReference ref, String userID) {
-        DatabaseReference user = ref.child("usersWithVice").child(userID).child("displayName");
+        DatabaseReference user = ref.child("users").child(userID).child("displayName");
 
         user.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override

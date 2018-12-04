@@ -71,7 +71,7 @@ public class ChooseVice extends AppCompatActivity implements View.OnClickListene
                 FirebaseUser user = mAuth.getCurrentUser();
                 if (user != null) {
                     // User exists
-                    DatabaseReference usersRef = ref.child("usersWithVice").child(user.getUid());
+                    DatabaseReference usersRef = ref.child("users").child(user.getUid());
                     usersRef.child("vice").setValue(selected);
                     startActivity(intent);
                 } else {
