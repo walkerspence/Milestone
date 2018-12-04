@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +32,7 @@ public class UserSupporters extends AppCompatActivity {
     private FirebaseDatabase database;
     private DatabaseReference ref;
     private ImageView supporterIcon;
+    private TextView supporterName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class UserSupporters extends AppCompatActivity {
         setContentView(R.layout.activity_user_supporters);
 
         supporterIcon = findViewById(R.id.supporterIcon);
+        supporterName = findViewById(R.id.supporterName);
 
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance();
@@ -48,6 +52,7 @@ public class UserSupporters extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String supporterUID = (String) dataSnapshot.getValue();
                 populateSupporterIcon(supporterUID);
+                populateSupporterName(supporterUID);
             }
 
             @Override
@@ -65,6 +70,22 @@ public class UserSupporters extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int iconImageIndex = toIntExact((long) dataSnapshot.getValue());
                 supporterIcon.setImageResource(iconImageIndex);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+    }
+
+    public void populateSupporterName(String supporterUID) {
+        final DatabaseReference supporterIconRef = ref.child("supporters").
+                child(supporterUID).child("displayName");
+        supporterIconRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String nameOfSupporter = (String) dataSnapshot.getValue();
+                supporterName.setText(nameOfSupporter);
             }
 
             @Override

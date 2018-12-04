@@ -12,11 +12,18 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ImageView;
+
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import static java.lang.Math.toIntExact;
+
 
 import org.w3c.dom.Text;
 
@@ -25,15 +32,18 @@ public class UserSettings extends AppCompatActivity {
     private final String TAG = "UserSettings";
     public Intent intent;
     private TextView supporterCode;
-    private FirebaseUser user;
+    private ImageView icon;
 
     private FirebaseUser mAuth;
-    private FirebaseAuth.AuthStateListener mAuthListener;
+    private FirebaseDatabase database;
+    private DatabaseReference ref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_settings);
+
+        icon = findViewById(R.id.imageView9);
 
         Button[] buttons = new Button[3];
         Button b1 = findViewById(R.id.milestone_reached);
@@ -55,6 +65,23 @@ public class UserSettings extends AppCompatActivity {
             Log.d(TAG, "null user");
         }
         supporterCode.setText(mAuth.getUid());
+
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference();
+        DatabaseReference userIcon = ref.child("users").child(mAuth.getUid()).child("iconImage");
+
+        userIcon.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int iconImageIndex = toIntExact((long) dataSnapshot.getValue());
+                icon.setImageResource(iconImageIndex);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     public void onClick(View view) {

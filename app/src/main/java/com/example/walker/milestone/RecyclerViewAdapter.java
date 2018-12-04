@@ -52,6 +52,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 if (v.getBackground() == null) {
                     if (clickedIcon == null) {
                         clickedIconIndex = mImages.get(index);
+                        System.out.println("@@@" + clickedIconIndex);
                         clickedIcon = v;
                     } else {
                         clickedIcon.setBackground(null);
@@ -59,6 +60,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     v.setBackgroundResource(R.drawable.image_border);
                     clickedIcon = v;
                     clickedIconIndex = mImages.get(index);
+                    System.out.println("@@@" + clickedIconIndex);
                 } else {
                     v.setBackground(null);
                 }
