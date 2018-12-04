@@ -56,6 +56,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/header3" />
 
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="156dp"
+        android:layout_height="9dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintHorizontal_bias="0.44"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.88"
+        app:srcCompat="@color/thegrey" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="224dp"
+        android:layout_height="9dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.85"
+        app:srcCompat="@color/thegrey" />
+
     <Button
         android:id="@+id/supportersButton"
         android:layout_width="32dp"
@@ -131,15 +157,12 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="36dp"
-        android:layout_marginEnd="8dp"
         android:fontFamily="@font/misobold"
         android:text="S U P P O R T   C O D E"
         android:textColor="@color/colorPrimary"
         android:textSize="22dp"
-        app:layout_constraintEnd_toStartOf="@+id/textView4"
-        app:layout_constraintHorizontal_bias="0.336"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/change_icon" />
 
@@ -148,7 +171,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/misobold"
         android:text="P U S H   N O T I F I C A T I O N S"
@@ -157,35 +180,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.283"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/supporter_code" />
+        app:layout_constraintTop_toBottomOf="@+id/supportcode" />
 
     <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="@font/misobold"
-        android:text="KW33N"
-        android:textColor="@color/colorAccentSecond"
-        android:textSize="22dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/change_icon" />
-
-    <TextView
-        android:id="@+id/supporter_code"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
+        android:id="@+id/textView3"
+        android:layout_width="149dp"
+        android:layout_height="12dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/miso"
+        android:text="H O L D   D O W N   T O   C O P Y"
         android:textColor="@color/colorPrimary"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.183"
+        app:layout_constraintHorizontal_bias="0.169"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="@+id/imageView19" />
 
     <TextView
         android:id="@+id/textView6"
@@ -239,7 +250,6 @@
         android:id="@+id/daily_update"
         android:layout_width="25dp"
         android:layout_height="26dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/notification_on"
         android:onClick="onOffNotification"
@@ -273,5 +283,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/milestone_reached"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/supportcode"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="254dp"
+        android:layout_height="36dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/thegrey"
+        android:fontFamily="@font/misobold"
+        android:lineSpacingExtra="8sp"
+        android:onClick="onShareCode"
+        android:text="KW33N"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 </android.support.constraint.ConstraintLayout>

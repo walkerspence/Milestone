@@ -1,5 +1,8 @@
 package com.example.walker.milestone;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
@@ -45,7 +48,7 @@ public class UserSettings extends AppCompatActivity {
             buttons[i].setBackgroundResource(R.drawable.notification_on);
         }
 
-        supporterCode = findViewById(R.id.supporter_code);
+        supporterCode = findViewById(R.id.supportcode);
 
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         if (mAuth == null) {
@@ -61,7 +64,7 @@ public class UserSettings extends AppCompatActivity {
             intent = new Intent(this, Home.class);
             startActivity(intent);
         } else if (id == R.id.calendarButton){
-            intent = new Intent(this, UserCalendar.class);
+            intent = new Intent(this, UserMilestones.class);
             startActivity(intent);
         } else if (id == R.id.supportersButton){
             intent = new Intent(this, UserSupporters.class);
@@ -87,5 +90,12 @@ public class UserSettings extends AppCompatActivity {
             b.setTag("off");
         }
 
+    }
+
+    public void onShareCode(View view) {
+        // TODO: can u set "code" to the username
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("supporter code", "code");
+        clipboard.setPrimaryClip(clip);
     }
 }

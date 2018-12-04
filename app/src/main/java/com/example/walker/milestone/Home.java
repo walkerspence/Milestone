@@ -49,7 +49,7 @@ public class Home extends AppCompatActivity {
             intent = new Intent(this, Home.class);
             startActivity(intent);
         } else if (id == R.id.calendarButton){
-            intent = new Intent(this, UserCalendar.class);
+            intent = new Intent(this, UserMilestones.class);
             startActivity(intent);
         } else if (id == R.id.supportersButton){
             intent = new Intent(this, UserSupporters.class);

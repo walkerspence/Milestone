@@ -137,7 +137,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:fontFamily="@font/misobold"
-        android:text="S E N D I N G   T H E M   Y O U R   S U P P O R T   C O D E"
+        android:text="H O L D I N G   D O W N   Y O U R   S U P P O R T   C O D E"
         android:textColor="@color/thegreytwo"
         android:textSize="16dp"
         app:layout_constraintBottom_toTopOf="@+id/header3"
