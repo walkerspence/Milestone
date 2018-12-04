@@ -44,10 +44,10 @@
 
     <ImageView
         android:id="@+id/header2"
-        android:layout_width="367dp"
+        android:layout_width="0dp"
         android:layout_height="74dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/account_type_header" />

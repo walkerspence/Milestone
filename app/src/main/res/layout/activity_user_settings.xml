@@ -8,7 +8,7 @@
 
     <ImageView
         android:id="@+id/header"
-        android:layout_width="367dp"
+        android:layout_width="0dp"
         android:layout_height="73dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
@@ -171,7 +171,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/misobold"
         android:text="P U S H   N O T I F I C A T I O N S"
@@ -185,13 +185,18 @@
     <TextView
         android:id="@+id/textView3"
         android:layout_width="149dp"
-        android:layout_height="15dp"
+        android:layout_height="12dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:fontFamily="@font/miso"
         android:text="H O L D   D O W N   T O   C O P Y"
         android:textColor="@color/colorPrimary"
         android:textSize="15dp"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="357dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.169"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageView19" />
 
     <TextView
         android:id="@+id/textView6"
@@ -282,20 +287,20 @@
     <Button
         android:id="@+id/supportcode"
         style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="254dp"
+        android:layout_height="36dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
         android:backgroundTint="@color/thegrey"
         android:fontFamily="@font/misobold"
         android:lineSpacingExtra="8sp"
         android:onClick="onShareCode"
         android:text="KW33N"
-        android:textColor="@color/black"
         android:textAlignment="center"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintHorizontal_bias="0.344"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
