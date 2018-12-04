@@ -24,6 +24,9 @@ public class UserSupporters extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_supporters);
+
+        mAuth = FirebaseAuth.getInstance().getCurrentUser();
+
     }
 
     public void onClick(View view) {
@@ -56,7 +59,6 @@ public class UserSupporters extends AppCompatActivity {
     }
 
     public void onShareCode(View view) {
-        // TODO: can u set "code" to the username
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         if (mAuth == null) {
             Log.d(TAG, "null user");
