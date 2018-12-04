@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/displayText" />
 
     <EditText
-        android:id="@+id/school"
+        android:id="@+id/supporterCode"
         android:layout_width="271dp"
         android:layout_height="49dp"
         android:layout_marginStart="8dp"
@@ -68,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.561"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/schoolText" />
+        app:layout_constraintTop_toBottomOf="@+id/supporterCodeText" />
 
     <EditText
         android:id="@+id/confirmPassword"
@@ -136,7 +136,7 @@
         app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <TextView
-        android:id="@+id/schoolText"
+        android:id="@+id/supporterCodeText"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -148,7 +148,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.216"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/school" />
+        app:layout_constraintTop_toBottomOf="@+id/supporterCode" />
 
     <TextView
         android:id="@+id/passwordText"
