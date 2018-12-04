@@ -99,21 +99,31 @@
         app:layout_constraintStart_toEndOf="@+id/resourcesButton"
         app:layout_constraintTop_toTopOf="@+id/header3" />
 
-    <Button
-        android:id="@+id/add_milestone"
-        android:layout_width="314dp"
-        android:layout_height="48dp"
+    <!--<Button-->
+        <!--android:id="@+id/add_milestone"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@drawable/border_button"-->
+        <!--android:fontFamily="@font/miso"-->
+        <!--android:text="ADD A MILESTONE"-->
+        <!--android:textColor="@color/colorPrimary"-->
+        <!--android:textSize="26dp"-->
+        <!--tools:layout_editor_absoluteX="62dp"-->
+        <!--tools:layout_editor_absoluteY="105dp" />-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/border_button"
-        android:fontFamily="@font/miso"
-        android:text="ADD A MILESTONE"
-        android:textColor="@color/colorPrimary"
-        android:textSize="26dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/header3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header" />
+        app:layout_constraintTop_toBottomOf="@+id/header" >
+
+    </android.support.v7.widget.RecyclerView>
 
 </android.support.constraint.ConstraintLayout>

@@ -5,16 +5,29 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 public class UserMilestones extends AppCompatActivity {
 
     public Intent intent;
     String milestoneText;
     String milestoneDate;
+    String dummy1text = "first milestone";
+    String dummy1date = "12-05-2018";
+    String dummy2text = "Second milestone";
+    String dummy2date = "12-04-2018";
+    String dummy3text = "third milestone";
+    String dummy3date = "12-30-2018";
+    List<Milestone> milestones = new ArrayList<>();
 
 
     @Override
@@ -22,43 +35,31 @@ public class UserMilestones extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_milestones);
 
-        Button addMilestone = findViewById(R.id.add_milestone);
-        addMilestone.setOnClickListener(new Button.OnClickListener() {
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext(), R.style.Theme_AppCompat);
-                builder.setTitle("Add a milestone");
+//        Button addMilestone = findViewById(R.id.add_milestone);
+        final RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
 
-                // Set up the input
-                final EditText input = new EditText(v.getContext());
-                // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-                input.setInputType(InputType.TYPE_CLASS_TEXT);
-                builder.setView(input);
-                final EditText date = new EditText(v.getContext());
-                date.setInputType(InputType.TYPE_CLASS_TEXT);
-                builder.setView(date);
-                // Set up the buttons
-                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        milestoneText = input.getText().toString();
-                        milestoneDate = date.getText().toString();
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-                builder.show();
+        milestones.add(new Milestone(dummy1text, dummy1date));
+        milestones.add(new Milestone(dummy2text, dummy2date));
+        milestones.add(new Milestone(dummy3text, dummy3date));
+
+        milestones.sort(new Comparator<Milestone>() {
+            @Override
+            public int compare(Milestone o1, Milestone o2) {
+                return o1.getDate().compareTo(o2.getDate());
             }
         });
+
+        MilestoneRVAdapter adapter = new MilestoneRVAdapter(milestones);
+        rv.setAdapter(adapter);
+
     }
 
     public void onClick(View view) {
         int id = view.getId();
         if(id == R.id.homeButton) {
-            intent = new Intent(this, User.class);
+            intent = new Intent(this, Home.class);
             startActivity(intent);
         } else if (id == R.id.calendarButton){
             intent = new Intent(this, UserCalendar.class);
