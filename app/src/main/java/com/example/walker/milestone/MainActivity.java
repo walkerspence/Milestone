@@ -17,6 +17,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.DataSnapshot;
+
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -69,11 +76,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             Log.d(TAG, "signInWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
 
-                            /* TODO: We need to replace AccountType.class with the correct activity for a signed in user
-                             */
-
-                            Intent intent = new Intent(getBaseContext(), AccountType.class);
-                            startActivity(intent);
+                            sendToCorrectIntent(user);
+//
+//                            Intent intent = new Intent(getBaseContext(), AccountType.class);
+//                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -83,6 +89,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     }
                 });
         // [END sign_in_with_email]
+    }
+
+    private void sendToCorrectIntent(FirebaseUser user) {
+        final FirebaseUser checkUser = user;
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference usersRef = ref.child("users");
+        DatabaseReference supportersRef = ref.child("supporters");
+
+        usersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.hasChild(checkUser.getUid())) {
+                    Intent intent = new Intent(getBaseContext(), Home.class);
+                    startActivity(intent);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+            }
+        });
+
+        supportersRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                if (snapshot.hasChild(checkUser.getUid())) {
+                    Intent intent = new Intent(getBaseContext(), SupporterHome.class);
+                    startActivity(intent);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+            }
+        });
     }
 
     private void signOut() {

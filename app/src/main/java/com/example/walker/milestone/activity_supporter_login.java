@@ -57,7 +57,7 @@ public class activity_supporter_login extends AppCompatActivity implements View.
                     DatabaseReference usersRef = ref.child("supporters");
                     usersRef.child(supporter.getUid()).setValue(new Supporter(supporter.getUid(),
                             displayName.getText().toString(), email.getText().toString(),
-                            supporterCode.getText().toString()));
+                            supporterCode.getText().toString(), false));
                     startActivity(intent);
                 } else {
                     // User is signed out

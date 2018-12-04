@@ -94,10 +94,11 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
                 Log.d(TAG, "got here");
                 if (user != null) {
                     // User is signed in
-                    DatabaseReference usersRef = ref.child("usersWithVice");
+                    DatabaseReference usersRef = ref.child("users");
                     usersRef.child(user.getUid()).setValue(new User(user.getUid(),
                             display_name.getText().toString(), email.getText().toString(),
-                            schoolDropdown.getSelectedItem().toString(), imageIcon.clickedIcon.getId(), "placeholder"));
+                            schoolDropdown.getSelectedItem().toString(),
+                            imageIcon.clickedIcon.getId(), "placeholder", true));
                     startActivity(intent);
                 } else {
                     // User is signed out
