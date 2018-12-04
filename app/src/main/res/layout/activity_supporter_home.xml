@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".SupporterHome">
 
+    <Button
+        android:id="@+id/tips"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="315dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@android:color/white"
+        android:fontFamily="@font/misobold"
+        android:text="T I P S  O N  H O W  T O  P R O V I D E  S U P P O R T"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/substance" />
+
     <ImageView
         android:id="@+id/header"
         android:layout_width="367dp"
@@ -25,6 +41,36 @@
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/s_bottombar" />
+
+    <TextView
+        android:id="@+id/days_sober"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:autoLink="phone"
+        android:fontFamily="@font/misobold"
+        android:textColor="@color/colorAccentSecond"
+        android:textSize="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header" />
+
+    <TextView
+        android:id="@+id/substance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:autoLink="phone"
+        android:fontFamily="@font/misobold"
+        android:textColor="@color/colorPrimary"
+        android:textSize="26dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.506"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/days_sober" />
 
     <Button
         android:id="@+id/homeButton"
@@ -84,5 +130,16 @@
         app:layout_constraintStart_toStartOf="@+id/header"
         app:layout_constraintTop_toTopOf="@+id/header"
         app:layout_constraintVertical_bias="0.36" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/header3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tips" />
 
 </android.support.constraint.ConstraintLayout>
