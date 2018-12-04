@@ -1,5 +1,8 @@
 package com.example.walker.milestone;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
@@ -62,5 +65,12 @@ public class UserSettings extends AppCompatActivity {
             b.setTag("off");
         }
 
+    }
+
+    public void onShareCode(View view) {
+        // TODO: can u set "code" to the username
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("supporter code", "code");
+        clipboard.setPrimaryClip(clip);
     }
 }
