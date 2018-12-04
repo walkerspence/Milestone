@@ -29,6 +29,7 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
     private static final String TAG = "SupporterHome";
 
     private TextView name;
+    private TextView substanceView;
     private Button calendarButton, settingsButton;
 
     private FirebaseAuth mAuth;
@@ -39,6 +40,7 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
 
     public String daysSober = "4";
     public String substance = "ALCOHOL";
+    public String viceName;
 
     String dummy1text = "first milestone";
     String dummy1date = "12-05-2018";
@@ -55,8 +57,7 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
 
         final TextView daysView = findViewById(R.id.days_sober);
         daysView.setText(daysSober + " DAYS");
-        TextView substanceView = findViewById(R.id.substance);
-        substanceView.setText("FROM " + substance);
+        substanceView = findViewById(R.id.substance);
 
         // Set components
         name = findViewById(R.id.name);
@@ -100,6 +101,7 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     userID = (String) dataSnapshot.getValue();
                     populateUserName(ref, userID);
+                    getUserSubstance(ref, userID);
                 }
 
                 @Override
@@ -120,6 +122,22 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
             public void onDataChange(DataSnapshot dataSnapshot) {
                 userName = (String) dataSnapshot.getValue();
                 name.setText(userName);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+            }
+        });
+    }
+
+    public void getUserSubstance(DatabaseReference ref, String userID) {
+        DatabaseReference vice = ref.child("users").child(userID).child("vice");
+
+        vice.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                viceName = (String) dataSnapshot.getValue();
+                substanceView.setText("FROM " + viceName.toUpperCase());
             }
 
             @Override
