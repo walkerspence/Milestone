@@ -3,6 +3,8 @@ package com.example.walker.milestone;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +18,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.database.DatabaseError;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 
 
 public class SupporterHome extends AppCompatActivity implements View.OnClickListener{
@@ -32,15 +37,49 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
     private String userID;
     private String userName;
 
+    public String daysSober = "4";
+    public String substance = "ALCOHOL";
+
+    String dummy1text = "first milestone";
+    String dummy1date = "12-05-2018";
+    String dummy2text = "Second milestone";
+    String dummy2date = "12-04-2018";
+    String dummy3text = "third milestone";
+    String dummy3date = "12-30-2018";
+    List<Milestone> milestones = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supporter_home);
 
+        final TextView daysView = findViewById(R.id.days_sober);
+        daysView.setText(daysSober + " DAYS");
+        TextView substanceView = findViewById(R.id.substance);
+        substanceView.setText("FROM " + substance);
+
         // Set components
         name = findViewById(R.id.name);
         calendarButton = findViewById(R.id.calendarButton);
         settingsButton = findViewById(R.id.settingsButton);
+
+        final RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        rv.setLayoutManager(llm);
+
+        milestones.add(new Milestone(dummy1text, dummy1date));
+        milestones.add(new Milestone(dummy2text, dummy2date));
+        milestones.add(new Milestone(dummy3text, dummy3date));
+
+        milestones.sort(new Comparator<Milestone>() {
+            @Override
+            public int compare(Milestone o1, Milestone o2) {
+                return o1.getDate().compareTo(o2.getDate());
+            }
+        });
+
+        MilestoneRVAdapter adapter = new MilestoneRVAdapter(milestones);
+        rv.setAdapter(adapter);
 
         // Set listeners
         calendarButton.setOnClickListener(this);

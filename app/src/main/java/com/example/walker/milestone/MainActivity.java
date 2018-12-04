@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             signIn(username.getText().toString(), passwordLogin.getText().toString());
         } else if (i == R.id.directlogin) {
             //TODO: Set the login screen based on User/Supporter account determined from Database
-            intent = new Intent(this, Home.class);
+            intent = new Intent(this, SupporterHome.class);
             startActivity(intent);
         }
     }
