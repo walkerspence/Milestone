@@ -54,7 +54,6 @@ public class UserSettings extends AppCompatActivity {
         if (mAuth == null) {
             Log.d(TAG, "null user");
         }
-        Log.d(TAG, mAuth.getUid());
         supporterCode.setText(mAuth.getUid());
     }
 

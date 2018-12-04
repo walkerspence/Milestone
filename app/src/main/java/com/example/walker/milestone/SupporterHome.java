@@ -42,14 +42,6 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
     public String substance = "ALCOHOL";
     public String viceName;
 
-    String dummy1text = "first milestone";
-    String dummy1date = "12-05-2018";
-    String dummy2text = "Second milestone";
-    String dummy2date = "12-04-2018";
-    String dummy3text = "third milestone";
-    String dummy3date = "12-30-2018";
-    List<Milestone> milestones = new ArrayList<>();
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,24 +55,6 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
         name = findViewById(R.id.name);
         calendarButton = findViewById(R.id.calendarButton);
         settingsButton = findViewById(R.id.settingsButton);
-
-        final RecyclerView rv = (RecyclerView) findViewById(R.id.rv);
-        LinearLayoutManager llm = new LinearLayoutManager(this);
-        rv.setLayoutManager(llm);
-
-        milestones.add(new Milestone(dummy1text, dummy1date));
-        milestones.add(new Milestone(dummy2text, dummy2date));
-        milestones.add(new Milestone(dummy3text, dummy3date));
-
-        milestones.sort(new Comparator<Milestone>() {
-            @Override
-            public int compare(Milestone o1, Milestone o2) {
-                return o1.getDate().compareTo(o2.getDate());
-            }
-        });
-
-        MilestoneRVAdapter adapter = new MilestoneRVAdapter(milestones);
-        rv.setAdapter(adapter);
 
         // Set listeners
         calendarButton.setOnClickListener(this);
