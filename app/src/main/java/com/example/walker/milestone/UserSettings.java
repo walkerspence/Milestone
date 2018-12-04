@@ -33,6 +33,9 @@ public class UserSettings extends AppCompatActivity {
     public Intent intent;
     private TextView supporterCode;
     private ImageView icon;
+    private FirebaseUser user;
+    public String viceName;
+
 
     private FirebaseUser mAuth;
     private FirebaseDatabase database;
@@ -44,6 +47,7 @@ public class UserSettings extends AppCompatActivity {
         setContentView(R.layout.activity_user_settings);
 
         icon = findViewById(R.id.imageView9);
+        viceName = getIntent().getStringExtra("viceName");
 
         Button[] buttons = new Button[3];
         Button b1 = findViewById(R.id.milestone_reached);
@@ -88,18 +92,23 @@ public class UserSettings extends AppCompatActivity {
         int id = view.getId();
         if(id == R.id.homeButton) {
             intent = new Intent(this, Home.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.calendarButton){
             intent = new Intent(this, UserMilestones.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.supportersButton){
             intent = new Intent(this, UserSupporters.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.settingsButton){
             intent = new Intent(this, UserSettings.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.resourcesButton){
             intent = new Intent(this, UserResources.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         }
 

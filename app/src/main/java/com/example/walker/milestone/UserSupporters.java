@@ -33,6 +33,8 @@ public class UserSupporters extends AppCompatActivity {
     private DatabaseReference ref;
     private ImageView supporterIcon;
     private TextView supporterName;
+    public String viceName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class UserSupporters extends AppCompatActivity {
         supporterIcon = findViewById(R.id.supporterIcon);
         supporterName = findViewById(R.id.supporterName);
 
+        viceName = getIntent().getStringExtra("viceName");
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseDatabase.getInstance();
         ref = database.getReference();
@@ -98,18 +101,23 @@ public class UserSupporters extends AppCompatActivity {
         int id = view.getId();
         if(id == R.id.homeButton) {
             intent = new Intent(this, Home.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.calendarButton){
             intent = new Intent(this, UserMilestones.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.supportersButton){
             intent = new Intent(this, UserSupporters.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.settingsButton){
             intent = new Intent(this, UserSettings.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.resourcesButton){
             intent = new Intent(this, UserResources.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         }
 

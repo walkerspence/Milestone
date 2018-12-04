@@ -21,10 +21,10 @@ import static java.lang.Math.toIntExact;
 public class SupporterSettings extends AppCompatActivity {
 
     public Intent intent;
+    public String viceName;
     private ImageView icon;
     private FirebaseUser mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,8 @@ public class SupporterSettings extends AppCompatActivity {
         buttons[0] = b1;
         Button b2 = findViewById(R.id.sobriety_reset);
         buttons[1] = b1;
+
+        viceName = getIntent().getStringExtra("viceName");
 
         for (int i = 0; i < buttons.length; i++){
             buttons[i].setTag("on");
@@ -67,12 +69,15 @@ public class SupporterSettings extends AppCompatActivity {
         int id = view.getId();
         if(id == R.id.homeButton) {
             intent = new Intent(this, SupporterHome.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.calendarButton){
             intent = new Intent(this, SupporterCalendar.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.settingsButton){
             intent = new Intent(this, SupporterSettings.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         }
     }
