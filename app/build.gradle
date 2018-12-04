@@ -41,6 +41,9 @@ dependencies {
 
     //circular imageview
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+
+    //loading signifier
+    implementation 'com.tuyenmonkey:mkloader:1.4.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
