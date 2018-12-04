@@ -24,7 +24,7 @@
 
     <ImageView
         android:id="@+id/header"
-        android:layout_width="367dp"
+        android:layout_width="0dp"
         android:layout_height="120dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.428"
@@ -34,7 +34,7 @@
 
     <ImageView
         android:id="@+id/header3"
-        android:layout_width="365dp"
+        android:layout_width="0dp"
         android:layout_height="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -120,16 +120,15 @@
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/misobold"
         android:textColor="@color/colorAccent"
         android:textSize="44dp"
-        app:layout_constraintBottom_toBottomOf="@+id/header"
         app:layout_constraintEnd_toEndOf="@+id/header"
-        app:layout_constraintHorizontal_bias="0.546"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/header"
-        app:layout_constraintTop_toTopOf="@+id/header"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintTop_toTopOf="@+id/header" />
 
 
 

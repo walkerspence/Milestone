@@ -47,6 +47,8 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supporter_home);
 
+        viceName = getIntent().getStringExtra("viceName");
+
         final TextView daysView = findViewById(R.id.days_sober);
         daysView.setText(daysSober + " DAYS");
         substanceView = findViewById(R.id.substance);
@@ -128,9 +130,11 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
 //        } else
         if (id == R.id.calendarButton){
             intent = new Intent(this, SupporterCalendar.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.settingsButton){
             intent = new Intent(this, SupporterSettings.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         }
     }

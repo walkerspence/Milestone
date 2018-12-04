@@ -18,30 +18,38 @@ public class UserSupporters extends AppCompatActivity {
     private static final String TAG = "UserSupporters";
     public Intent intent;
     private FirebaseUser mAuth;
+    public String viceName;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_supporters);
+
+        viceName = getIntent().getStringExtra("viceName");
     }
 
     public void onClick(View view) {
         int id = view.getId();
         if(id == R.id.homeButton) {
             intent = new Intent(this, Home.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.calendarButton){
             intent = new Intent(this, UserMilestones.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.supportersButton){
             intent = new Intent(this, UserSupporters.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.settingsButton){
             intent = new Intent(this, UserSettings.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.resourcesButton){
             intent = new Intent(this, UserResources.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         }
 
