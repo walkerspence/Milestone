@@ -49,6 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 if (v.getBackground() == null) {
                     if (clickedIcon == null) {
                         clickedIcon = v;
+
                     } else {
                         clickedIcon.setBackground(null);
                     }

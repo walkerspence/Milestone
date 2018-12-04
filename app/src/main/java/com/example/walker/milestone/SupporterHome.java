@@ -1,6 +1,7 @@
 package com.example.walker.milestone;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -137,6 +138,17 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
             intent.putExtra("viceName", viceName);
             startActivity(intent);
         }
+    }
+
+    public void onLoadTips(View view) {
+        int id = view.getId();
+        if (id == R.id.seeMoreTips) {
+            String url = "https://www.foundationsrecoverynetwork.com/6-ways-help-someone-love-stay-sober/";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
+        }
+
     }
 
 }

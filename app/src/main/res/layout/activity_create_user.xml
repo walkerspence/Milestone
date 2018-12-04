@@ -183,12 +183,11 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="362dp"
+        android:layout_width="0dp"
         android:layout_height="71dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/displayText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
@@ -260,5 +259,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailText"
         app:layout_constraintVertical_bias="0.8" />
+
+
+    <com.tuyenmonkey.mkloader.MKLoader
+        android:id="@+id/loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/imageView7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:mk_color="@color/colorPrimary"
+        app:mk_type="Whirlpool"
+        android:visibility="invisible"/>
 
 </android.support.constraint.ConstraintLayout>

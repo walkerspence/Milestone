@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +21,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class activity_supporter_login extends AppCompatActivity implements View.OnClickListener {
 
     public Intent intent;
@@ -29,6 +33,11 @@ public class activity_supporter_login extends AppCompatActivity implements View.
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private ArrayList<Integer> mImages = new ArrayList<>();
+
+
+    //lookie here Bryan
+    private RecyclerViewAdapter imageIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +51,19 @@ public class activity_supporter_login extends AppCompatActivity implements View.
         password = findViewById(R.id.password);
         confirmPassword = findViewById(R.id.confirmPassword);
 
+        mImages.add(R.drawable.blank_emoji);
+        mImages.add(R.drawable.blush_emoji);
+        mImages.add(R.drawable.cheese_emoji);
+        mImages.add(R.drawable.drop_emoji);
+        mImages.add(R.drawable.love_emoji);
+        mImages.add(R.drawable.sleep_emoji);
+        mImages.add(R.drawable.smile2_emoji);
+        mImages.add(R.drawable.smile_emoji);
+        mImages.add(R.drawable.sunglass_emoji);
+        mImages.add(R.drawable.tongue_emoji);
+        mImages.add(R.drawable.wow_emoji);
+        initRecyclerView();
+
         mAuth = FirebaseAuth.getInstance();
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference ref = database.getReference();
@@ -54,10 +76,13 @@ public class activity_supporter_login extends AppCompatActivity implements View.
                 Log.d(TAG, "got here");
                 if (supporter != null) {
                     // User is signed in
-                    DatabaseReference usersRef = ref.child("supporters");
-                    usersRef.child(supporter.getUid()).setValue(new Supporter(supporter.getUid(),
+                    DatabaseReference supportersRef = ref.child("supporters");
+                    supportersRef.child(supporter.getUid()).setValue(new Supporter(supporter.getUid(),
                             displayName.getText().toString(), email.getText().toString(),
-                            supporterCode.getText().toString(), false));
+                            supporterCode.getText().toString(), false,
+                            imageIcon.clickedIcon.getId()));
+
+                    setUserSupporter(supporter.getUid(), supporterCode.getText().toString(), ref);
                     startActivity(intent);
                 } else {
                     // User is signed out
@@ -65,6 +90,21 @@ public class activity_supporter_login extends AppCompatActivity implements View.
                 }
             }
         };
+    }
+
+
+    private void initRecyclerView() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(layoutManager);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(this, mImages);
+        recyclerView.setAdapter(adapter);
+        imageIcon = adapter;
+    }
+
+    public void setUserSupporter(String supporterUID, String userUID, DatabaseReference ref) {
+        DatabaseReference usersRef = ref.child("users");
+        usersRef.child(userUID).child("supporterUID").setValue(supporterUID);
     }
 
     public void createAccount(String email, String password) {

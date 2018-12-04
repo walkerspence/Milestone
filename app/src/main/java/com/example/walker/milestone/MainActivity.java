@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public Intent intent;
     private EditText username, passwordLogin;
     private Button signup, login, forgotPassword;
+    private View loader;
     private String domain = "@example.com";
 
 
@@ -50,7 +51,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // Buttons
         signup = findViewById(R.id.signup);
         login = findViewById(R.id.login);
+
         forgotPassword = findViewById(R.id.forgot_password);
+
+        loader = findViewById(R.id.login_loader);
 
         // Set the listeners
         signup.setOnClickListener(this);
@@ -82,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //                            startActivity(intent);
                         } else {
                             // If sign in fails, display a message to the user.
+                            loader.setVisibility(View.INVISIBLE);
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
                             Toast.makeText(MainActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
@@ -158,6 +163,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent = new Intent(this, AccountType.class);
             startActivity(intent);
         } else if (i == R.id.login) {
+            loader.setVisibility(View.VISIBLE);
             signIn(username.getText().toString(), passwordLogin.getText().toString());
         } else if (i == R.id.directlogin) {
             //TODO: Set the login screen based on User/Supporter account determined from Database
