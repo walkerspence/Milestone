@@ -54,10 +54,12 @@ public class activity_supporter_login extends AppCompatActivity implements View.
                 Log.d(TAG, "got here");
                 if (supporter != null) {
                     // User is signed in
-                    DatabaseReference usersRef = ref.child("supporters");
-                    usersRef.child(supporter.getUid()).setValue(new Supporter(supporter.getUid(),
+                    DatabaseReference supportersRef = ref.child("supporters");
+                    supportersRef.child(supporter.getUid()).setValue(new Supporter(supporter.getUid(),
                             displayName.getText().toString(), email.getText().toString(),
                             supporterCode.getText().toString(), false));
+
+                    setUserSupporter(supporter.getUid(), supporterCode.getText().toString(), ref);
                     startActivity(intent);
                 } else {
                     // User is signed out
@@ -65,6 +67,11 @@ public class activity_supporter_login extends AppCompatActivity implements View.
                 }
             }
         };
+    }
+
+    public void setUserSupporter(String supporterUID, String userUID, DatabaseReference ref) {
+        DatabaseReference usersRef = ref.child("users");
+        usersRef.child(userUID).child("supporterUID").setValue(supporterUID);
     }
 
     public void createAccount(String email, String password) {

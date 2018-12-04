@@ -1,5 +1,6 @@
 package com.example.walker.milestone;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,7 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
 
     private EditText display_name, email, school, password, confirmPassword;
     private Button selectIcon, submit;
+    private View loader;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -77,12 +79,14 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
         // Buttons
         //selectIcon = findViewById(R.id.selectIcon);
         submit = findViewById(R.id.submit);
-
+        loader = findViewById(R.id.loader);
         // Set listeners
 //        selectIcon.setOnClickListener(this);
         submit.setOnClickListener(this);
 
         mAuth = FirebaseAuth.getInstance();
+
+
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
         final DatabaseReference ref = database.getReference();
 
@@ -98,7 +102,8 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
                     usersRef.child(user.getUid()).setValue(new User(user.getUid(),
                             display_name.getText().toString(), email.getText().toString(),
                             schoolDropdown.getSelectedItem().toString(),
-                            imageIcon.clickedIcon.getId(), "placeholder", true));
+                            imageIcon.clickedIcon.getId(), "placeholder", true,
+                            "placeholder"));
                     startActivity(intent);
                 } else {
                     // User is signed out
@@ -130,11 +135,14 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         Log.d(TAG, "insideCreateUser");
                         if (task.isSuccessful()) {
+
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
                         } else {
                             // If sign in fails, display a message to the user.
+                            submit.setVisibility(View.VISIBLE);
+                            loader.setVisibility(View.INVISIBLE);
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
                             Toast.makeText(CreateUser.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
@@ -188,6 +196,8 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
 //            startActivity(intent);
         if (i == R.id.submit) {
             Log.d(TAG, "creatingAccount....");
+            submit.setVisibility(View.INVISIBLE);
+            loader.setVisibility(View.VISIBLE);
             createAccount(email.getText().toString(), password.getText().toString());
         }
     }
