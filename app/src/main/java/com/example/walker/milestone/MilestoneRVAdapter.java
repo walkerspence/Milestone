@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -62,9 +63,14 @@ public class MilestoneRVAdapter extends RecyclerView.Adapter<MilestoneRVAdapter.
         DateFormat dateFormat = new SimpleDateFormat("MMMM d, yyyy");
         Date date = milestones.get(i).date;
         Date curr = new Date();
+        try {
+            curr = new SimpleDateFormat("MM-dd-yyyy").parse("12-02-2018");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         LocalDate localDate = date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
         long timeLeft = (long) date.getTime() - curr.getTime();
-        int daysLeft = (int) TimeUnit.DAYS.convert(timeLeft, TimeUnit.MILLISECONDS) + 1;
+        int daysLeft = (int) TimeUnit.DAYS.convert(timeLeft, TimeUnit.MILLISECONDS);
         mvh.milestoneDate.setText(dateFormat.format(milestones.get(i).date));
         if (daysLeft == 1) {
             mvh.milestoneDaysLeft.setText(Integer.toString(daysLeft) + " day left");

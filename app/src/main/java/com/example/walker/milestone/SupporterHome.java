@@ -30,6 +30,7 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
     private static final String TAG = "SupporterHome";
 
     private TextView name;
+    private TextView substanceView;
     private Button calendarButton, settingsButton;
 
     private FirebaseAuth mAuth;
@@ -40,16 +41,18 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
 
     public String daysSober = "4";
     public String substance = "ALCOHOL";
+    public String viceName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_supporter_home);
 
+        viceName = getIntent().getStringExtra("viceName");
+
         final TextView daysView = findViewById(R.id.days_sober);
         daysView.setText(daysSober + " DAYS");
-        TextView substanceView = findViewById(R.id.substance);
-        substanceView.setText("FROM " + substance);
+        substanceView = findViewById(R.id.substance);
 
         // Set components
         name = findViewById(R.id.name);
@@ -75,6 +78,7 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     userID = (String) dataSnapshot.getValue();
                     populateUserName(ref, userID);
+                    getUserSubstance(ref, userID);
                 }
 
                 @Override
@@ -103,6 +107,22 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
         });
     }
 
+    public void getUserSubstance(DatabaseReference ref, String userID) {
+        DatabaseReference vice = ref.child("users").child(userID).child("vice");
+
+        vice.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                viceName = (String) dataSnapshot.getValue();
+                substanceView.setText("FROM " + viceName.toUpperCase());
+            }
+
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+            }
+        });
+    }
+
     public void onClick(View view) {
         int id = view.getId();
 //        if(id == R.id.homeButton) {
@@ -111,9 +131,11 @@ public class SupporterHome extends AppCompatActivity implements View.OnClickList
 //        } else
         if (id == R.id.calendarButton){
             intent = new Intent(this, SupporterCalendar.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         } else if (id == R.id.settingsButton){
             intent = new Intent(this, SupporterSettings.class);
+            intent.putExtra("viceName", viceName);
             startActivity(intent);
         }
     }
