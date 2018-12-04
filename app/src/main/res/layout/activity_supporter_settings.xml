@@ -166,6 +166,7 @@
         android:layout_width="25dp"
         android:layout_height="26dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/notification_on"
         android:onClick="onOffNotification"
@@ -179,7 +180,7 @@
         android:layout_width="25dp"
         android:layout_height="26dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/notification_on"
@@ -198,10 +199,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/header3"
         app:layout_constraintEnd_toStartOf="@+id/imageView11"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/temp_icon" />
 
     <ImageView
@@ -220,8 +224,11 @@
         android:layout_height="58dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="116dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/header3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/plus_circle" />
 
 </android.support.constraint.ConstraintLayout>
