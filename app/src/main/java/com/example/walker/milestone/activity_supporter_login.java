@@ -80,7 +80,7 @@ public class activity_supporter_login extends AppCompatActivity implements View.
                     supportersRef.child(supporter.getUid()).setValue(new Supporter(supporter.getUid(),
                             displayName.getText().toString(), email.getText().toString(),
                             supporterCode.getText().toString(), false,
-                            imageIcon.clickedIcon.getId()));
+                            imageIcon.clickedIconIndex));
 
                     setUserSupporter(supporter.getUid(), supporterCode.getText().toString(), ref);
                     startActivity(intent);

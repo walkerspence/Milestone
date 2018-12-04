@@ -15,6 +15,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import static java.lang.Math.toIntExact;
+
 
 public class SupporterSettings extends AppCompatActivity {
 
@@ -51,7 +53,7 @@ public class SupporterSettings extends AppCompatActivity {
         supporterIcon.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int iconImageIndex = (int) dataSnapshot.getValue();
+                int iconImageIndex = toIntExact((long) dataSnapshot.getValue());
                 icon.setImageResource(iconImageIndex);
             }
 

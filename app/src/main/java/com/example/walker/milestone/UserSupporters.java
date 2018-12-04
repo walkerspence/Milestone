@@ -4,33 +4,73 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import static java.lang.Math.toIntExact;
 
 public class UserSupporters extends AppCompatActivity {
 
     private static final String TAG = "UserSupporters";
     public Intent intent;
     private FirebaseUser mAuth;
-
+    private FirebaseDatabase database;
+    private DatabaseReference ref;
+    private ImageView supporterIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_supporters);
 
+        supporterIcon = findViewById(R.id.supporterIcon);
+
         mAuth = FirebaseAuth.getInstance().getCurrentUser();
-        final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference ref = database.getReference();
-        DatabaseReference supporter;
+        database = FirebaseDatabase.getInstance();
+        ref = database.getReference();
+        DatabaseReference user = ref.child("users").child(mAuth.getUid()).child("supporterUID");
+
+        user.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String supporterUID = (String) dataSnapshot.getValue();
+                populateSupporterIcon(supporterUID);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
+
+    }
+
+    public void populateSupporterIcon(String supporterUID) {
+        final DatabaseReference supporterIconRef = ref.child("supporters").
+                            child(supporterUID).child("iconImage");
+        supporterIconRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int iconImageIndex = toIntExact((long) dataSnapshot.getValue());
+                supporterIcon.setImageResource(iconImageIndex);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+            }
+        });
     }
 
     public void onClick(View view) {

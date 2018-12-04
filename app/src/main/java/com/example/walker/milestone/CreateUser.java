@@ -102,7 +102,7 @@ public class CreateUser extends AppCompatActivity implements View.OnClickListene
                     usersRef.child(user.getUid()).setValue(new User(user.getUid(),
                             display_name.getText().toString(), email.getText().toString(),
                             schoolDropdown.getSelectedItem().toString(),
-                            imageIcon.clickedIcon.getId(), "placeholder", true,
+                            imageIcon.clickedIconIndex, "placeholder", true,
                             "placeholder"));
                     startActivity(intent);
                 } else {

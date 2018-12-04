@@ -24,6 +24,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private ArrayList<Integer> mImages = new ArrayList<>();
     private Context context;
     public View clickedIcon;
+    public int clickedIconIndex;
+    public int index;
 
     public RecyclerViewAdapter(Context context, ArrayList<Integer> mImages) {
         this.mImages = mImages;
@@ -40,6 +42,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder viewHolder, int i) {
+        index = i;
         Glide.with(context).load(mImages.get(i)).into(viewHolder.image);
         viewHolder.image.setImageResource(mImages.get(i));
         viewHolder.image.setOnClickListener(new View.OnClickListener() {
@@ -48,13 +51,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Log.d("hi", "clicked");
                 if (v.getBackground() == null) {
                     if (clickedIcon == null) {
+                        clickedIconIndex = mImages.get(index);
                         clickedIcon = v;
-
                     } else {
                         clickedIcon.setBackground(null);
                     }
                     v.setBackgroundResource(R.drawable.image_border);
                     clickedIcon = v;
+                    clickedIconIndex = mImages.get(index);
                 } else {
                     v.setBackground(null);
                 }
