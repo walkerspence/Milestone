@@ -46,10 +46,19 @@ public class ChooseVice extends AppCompatActivity implements View.OnClickListene
 
         if (i == R.id.cig) {
             selected = "cigarette";
+            cig.setBackgroundResource(R.drawable.cigarette_select);
+            alc.setBackgroundResource(R.drawable.alcohol);
+            boba.setBackgroundResource(R.drawable.boba);
         } else if (i == R.id.alc) {
             selected = "alcohol";
+            alc.setBackgroundResource(R.drawable.alcohol_select);
+            cig.setBackgroundResource(R.drawable.cigarette);
+            boba.setBackgroundResource(R.drawable.boba);
         } else if (i == R.id.boba) {
             selected = "boba";
+            boba.setBackgroundResource(R.drawable.boba_select);
+            cig.setBackgroundResource(R.drawable.cigarette);
+            alc.setBackgroundResource(R.drawable.alcohol);
         } else if (i == R.id.continueButton) {
             if (selected == null) {
                 continueButton.setError("Please select a vice.");
