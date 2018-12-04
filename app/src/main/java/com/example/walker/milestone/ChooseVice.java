@@ -41,7 +41,7 @@ public class ChooseVice extends AppCompatActivity implements View.OnClickListene
     }
 
     public void onClick(View view) {
-        intent = new Intent(this, UserCalendar.class);
+        intent = new Intent(this, Home.class);
         int i = view.getId();
 
         if (i == R.id.cig) {

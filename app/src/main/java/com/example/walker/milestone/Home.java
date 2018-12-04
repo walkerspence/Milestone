@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Home extends AppCompatActivity {
 
     public Intent intent;
-    public String daysSober = "4";
+    public String daysSober = "0";
     public String substance = "ALCOHOL";
 
     private static final String TAG = "Home";

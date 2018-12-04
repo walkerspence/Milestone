@@ -54,8 +54,11 @@ public class UserSupporters extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String supporterUID = (String) dataSnapshot.getValue();
-                populateSupporterIcon(supporterUID);
-                populateSupporterName(supporterUID);
+                System.out.println(supporterUID);
+                if (!supporterUID.equals("placeholder")) {
+                    populateSupporterIcon(supporterUID);
+                    populateSupporterName(supporterUID);
+                }
             }
 
             @Override
