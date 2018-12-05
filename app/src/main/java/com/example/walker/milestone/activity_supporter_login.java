@@ -18,10 +18,15 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+
+
 
 public class activity_supporter_login extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,6 +38,8 @@ public class activity_supporter_login extends AppCompatActivity implements View.
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
+    private DatabaseReference ref;
+    private boolean foundUser = false;
     private ArrayList<Integer> mImages = new ArrayList<>();
 
 
@@ -66,7 +73,7 @@ public class activity_supporter_login extends AppCompatActivity implements View.
 
         mAuth = FirebaseAuth.getInstance();
         final FirebaseDatabase database = FirebaseDatabase.getInstance();
-        final DatabaseReference ref = database.getReference();
+        ref = database.getReference();
 
         // Once the user is successfully created, we store additional info in our db
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -156,16 +163,45 @@ public class activity_supporter_login extends AppCompatActivity implements View.
 
         String confirmPass = confirmPassword.getText().toString();
         if (!pass.equals(confirmPass)) {
-            confirmPassword.setError("Passwords don't match");
+            confirmPassword.setError("Passwords don't match.");
             valid = false;
         } else {
             confirmPassword.setError(null);
         }
-        if (valid) {
-            Log.d(TAG, "validated");
+
+        String supportCode = supporterCode.getText().toString();
+        if (supportCode.isEmpty()) {
+            supporterCode.setError("Required.");
+            valid = false;
+        }
+        else if (!foundUser) {
+            supporterCode.setError("Invalid supporter code.");
+            valid = false;
+        }
+        else {
+            supporterCode.setError(null);
         }
 
         return valid;
+    }
+
+    public void searchUID(String userUID) {
+        final String uid = userUID;
+        DatabaseReference user = ref.child("users").child(uid);
+        user.addListenerForSingleValueEvent(new ValueEventListener() {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    foundUser = true;
+                    createAccount(email.getText().toString(), password.getText().toString());
+                }
+                else {
+                    createAccount(email.getText().toString(), password.getText().toString());
+                }
+            }
+
+            public void onCancelled(DatabaseError error) {
+            }
+        });
     }
 
     @Override
@@ -174,7 +210,8 @@ public class activity_supporter_login extends AppCompatActivity implements View.
 
         if (i == R.id.submit) {
             Log.d(TAG, "creatingAccount....");
-            createAccount(email.getText().toString(), password.getText().toString());
+            foundUser = false;
+            searchUID(supporterCode.getText().toString());
         }
     }
 
